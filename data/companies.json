@@ -1,0 +1,297 @@
+[
+ {
+  "n": "Repsol",
+  "tarifa": "Discriminación Horaria",
+  "p": 0.1659,
+  "l": 0.1159,
+  "v": 0.0969,
+  "pp": 0.1203,
+  "pv": 0.06,
+  "ex": 0.06,
+  "exn": "Tarifa Solar Precio Fijo",
+  "ev": 0.0609,
+  "evn": "Tarifa Vehículo Eléctrico",
+  "web": "https://www.repsol.es/particulares/hogar/luz-y-gas/precio-luz-hoy/",
+  "wl": "Ver web",
+  "nota": "",
+  "verificado": "2026-11-19",
+  "comprobar": [
+   {
+    "url": "https://selectra.es/energia/companias/repsol/tarifas",
+    "buscar": [
+     "0,1659",
+     "0,1159",
+     "0,0969"
+    ]
+   }
+  ]
+ },
+ {
+  "n": "Gana Energía",
+  "tarifa": "Tramos Horarios",
+  "p": 0.171,
+  "l": 0.104,
+  "v": 0.08,
+  "pp": null,
+  "pv": null,
+  "ex": 0.06,
+  "exn": "según la fuente, entre 6 y 7,7 cént.",
+  "ev": null,
+  "evn": "",
+  "web": "https://www.gana-energia.com",
+  "wl": "Ver web",
+  "nota": "No encontramos su precio de potencia ni una tarifa de coche eléctrico.",
+  "verificado": "2026-11-19",
+  "comprobar": [
+   {
+    "url": "https://www.papernest.es/gana-energia/tarifas/luz/tramos-horarios/",
+    "buscar": [
+     "0,171",
+     "0,104",
+     "0,080"
+    ]
+   }
+  ]
+ },
+ {
+  "n": "Iberdrola",
+  "tarifa": "Plan Online 3 Periodos",
+  "p": 0.194,
+  "l": 0.136,
+  "v": 0.1,
+  "pp": 0.091,
+  "pv": 0.0134,
+  "ex": 0.04,
+  "exn": "Plan Ahorro Solar",
+  "ev": null,
+  "evn": "",
+  "web": "https://www.iberdrola.es",
+  "wl": "Ver web",
+  "nota": "Otra fuente da 0,152 / 0,131 / 0,121 €/kWh: verifícalo. Su potencia en valle (0,013) sale de un solo listado.",
+  "verificado": "2026-11-19",
+  "comprobar": [
+   {
+    "url": "https://www.papernest.es/iberdrola/tarifas/plan-online-3-periodos/",
+    "buscar": [
+     "0,194",
+     "0,136",
+     "0,100"
+    ]
+   }
+  ]
+ },
+ {
+  "n": "Endesa",
+  "tarifa": "Conecta 3 Periodos",
+  "p": 0.2069,
+  "l": 0.1309,
+  "v": 0.1049,
+  "pp": 0.0737,
+  "pv": 0.0737,
+  "ex": 0.06,
+  "exn": "Endesa Solar (según comparador)",
+  "ev": null,
+  "evn": "",
+  "web": "https://www.endesa.com",
+  "wl": "Ver web",
+  "nota": "Precio sin descuento (con el 10 % del primer año: 0,186 / 0,118 / 0,094). Potencia convertida de 2,24 €/kW al mes.",
+  "verificado": "2026-11-19",
+  "comprobar": [
+   {
+    "url": "https://www.endesa.com/es/luz-y-gas/luz/tempo",
+    "buscar": [
+     "0,18621",
+     "0,11781",
+     "0,09441"
+    ]
+   }
+  ]
+ },
+ {
+  "n": "Naturgy",
+  "tarifa": "Tarifa Noche",
+  "p": 0.1822,
+  "l": 0.1092,
+  "v": 0.0739,
+  "pp": 0.123,
+  "pv": 0.0616,
+  "ex": 0.06,
+  "exn": "Tarifa Noche con Batería Virtual (otra fuente da 7 cént.)",
+  "ev": null,
+  "evn": "",
+  "web": "https://www.naturgy.es",
+  "wl": "Ver web",
+  "nota": "Según el comparador, no incluye IVA ni impuestos.",
+  "verificado": "2026-11-19",
+  "comprobar": [
+   {
+    "url": "https://www.papernest.es/energia/naturgy/tarifas/noche",
+    "buscar": [
+     "0,1822",
+     "0,1092",
+     "0,0739"
+    ]
+   }
+  ]
+ },
+ {
+  "n": "Holaluz",
+  "tarifa": "Tarifa 3 periodos",
+  "p": 0.213,
+  "l": 0.14,
+  "v": 0.113,
+  "pp": null,
+  "pv": null,
+  "ex": null,
+  "exn": "",
+  "ev": null,
+  "evn": "",
+  "web": "https://www.holaluz.com",
+  "wl": "Ver web",
+  "nota": "Precio de un comparador (29/09/2026). Sin datos de potencia, excedentes ni coche eléctrico.",
+  "verificado": "2026-11-19",
+  "comprobar": [
+   {
+    "url": "https://kompara.es/luz/comparativas/holaluz-vs-iner-energia",
+    "buscar": [
+     "0,2130",
+     "0,1400",
+     "0,1130"
+    ]
+   }
+  ]
+ },
+ {
+  "n": "Octopus Energy",
+  "tarifa": "Octopus 3",
+  "p": 0.1839,
+  "l": 0.0982,
+  "v": 0.0792,
+  "pp": 0.093,
+  "pv": 0.093,
+  "ex": 0.04,
+  "exn": "Octopus Solar (otras fuentes dan entre 3,5 y 7 cént.)",
+  "ev": null,
+  "evn": "",
+  "web": "https://octopusenergy.es",
+  "wl": "Ver web",
+  "nota": "Otra fuente da 0,171 / 0,123 / 0,075 €/kWh. Precios fijos 12 meses, sin permanencia.",
+  "verificado": "2026-11-19",
+  "comprobar": [
+   {
+    "url": "https://selectra.es/energia/companias/octopus-energy/tarifas",
+    "buscar": [
+     "0,1839",
+     "0,0982",
+     "0,0792"
+    ]
+   }
+  ]
+ },
+ {
+  "n": "TotalEnergies",
+  "tarifa": "A Tu Aire Programa Tu Ahorro",
+  "p": 0.1636,
+  "l": 0.0939,
+  "v": 0.0662,
+  "pp": 0.0815,
+  "pv": 0.0815,
+  "ex": 0.07,
+  "exn": "Tarifa solar (según comparador)",
+  "ev": null,
+  "evn": "",
+  "web": "https://totalenergies.es",
+  "wl": "Ver web",
+  "nota": "Tiene un Plan Vehículo Eléctrico, pero no encontramos su precio. Otras fuentes dan 0,174 / 0,104 / 0,076.",
+  "verificado": "2026-11-19",
+  "comprobar": [
+   {
+    "url": "https://www.papernest.es/totalenergies/tarifas/a-tu-aire-ahorro/",
+    "buscar": [
+     "0,16357",
+     "0,09393",
+     "0,06617"
+    ]
+   }
+  ]
+ },
+ {
+  "n": "Plenitude",
+  "tarifa": "Fácil Plus (precio único 24 h)",
+  "p": 0.0973,
+  "l": 0.0973,
+  "v": 0.0973,
+  "pp": 0.1,
+  "pv": 0.1,
+  "ex": 0.04,
+  "exn": "Fácil Plus Autoconsumo",
+  "ev": null,
+  "evn": "",
+  "web": "https://eniplenitude.es",
+  "wl": "Ver web",
+  "nota": "Su tarifa de tres periodos (Tendencia Luz) es indexada: 0,263 / 0,184 / 0,139 y varía.",
+  "verificado": "2026-11-19",
+  "comprobar": [
+   {
+    "url": "https://www.papernest.es/plenitude/tarifas",
+    "buscar": [
+     "0,097296"
+    ]
+   }
+  ]
+ },
+ {
+  "n": "Som Energia",
+  "tarifa": "Periodos 2.0TD",
+  "p": 0.226,
+  "l": 0.15,
+  "v": 0.124,
+  "pp": 0.082,
+  "pv": 0.008,
+  "ex": 0.03,
+  "exn": "Tarifa solar, según un comparador",
+  "ev": null,
+  "evn": "",
+  "web": "https://www.somenergia.coop",
+  "wl": "Ver web",
+  "nota": "Cooperativa: hay que hacerse socio. Datos de un solo comparador, quizá con impuestos.",
+  "verificado": "2026-11-19",
+  "comprobar": [
+   {
+    "url": "https://roams.es/energia/companias-energeticas/som-energia/tarifas/",
+    "buscar": [
+     "0,226",
+     "0,150",
+     "0,124"
+    ]
+   }
+  ]
+ },
+ {
+  "n": "Iner Energía",
+  "tarifa": "La Clásica",
+  "p": 0.1998,
+  "l": 0.1243,
+  "v": 0.0963,
+  "pp": null,
+  "pv": null,
+  "ex": null,
+  "exn": "",
+  "ev": null,
+  "evn": "",
+  "web": "https://selectra.es/energia/companias/iner-energia",
+  "wl": "Ver ofertas",
+  "nota": "Sin datos de potencia, excedentes ni coche eléctrico.",
+  "verificado": "2026-11-19",
+  "comprobar": [
+   {
+    "url": "https://selectra.es/energia/companias/iner-energia",
+    "buscar": [
+     "0,1998",
+     "0,1243",
+     "0,0963"
+    ]
+   }
+  ]
+ }
+]
