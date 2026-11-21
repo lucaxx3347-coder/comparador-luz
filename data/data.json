@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-20T22:16+00:00",
+ "generado": "2026-11-21T11:10+00:00",
  "pvpc": {
   "dias": [
    {
@@ -19,33 +19,66 @@
    },
    {
     "d": "2026-11-11",
-    "avg": 0.23,
-    "fuente": "Selectra (dato inicial)"
+    "avg": 0.2301,
+    "min": 0.1495,
+    "min_h": 3,
+    "max": 0.3,
+    "max_h": 10,
+    "fuente": "REData (Red Eléctrica)"
    },
    {
     "d": "2026-11-12",
-    "avg": 0.194,
-    "fuente": "Selectra (dato inicial)"
+    "avg": 0.1942,
+    "min": 0.0411,
+    "min_h": 14,
+    "max": 0.3499,
+    "max_h": 20,
+    "fuente": "REData (Red Eléctrica)"
    },
    {
     "d": "2026-11-13",
-    "avg": 0.224,
-    "fuente": "Selectra (dato inicial)"
+    "avg": 0.2242,
+    "min": 0.1305,
+    "min_h": 14,
+    "max": 0.4046,
+    "max_h": 18,
+    "fuente": "REData (Red Eléctrica)"
+   },
+   {
+    "d": "2026-11-14",
+    "avg": 0.1828,
+    "min": 0.0541,
+    "min_h": 13,
+    "max": 0.2477,
+    "max_h": 19,
+    "fuente": "REData (Red Eléctrica)"
    },
    {
     "d": "2026-11-15",
-    "avg": 0.155,
-    "fuente": "Selectra (dato inicial)"
+    "avg": 0.1547,
+    "min": 0.0544,
+    "min_h": 13,
+    "max": 0.241,
+    "max_h": 19,
+    "fuente": "REData (Red Eléctrica)"
    },
    {
     "d": "2026-11-16",
-    "avg": 0.209,
-    "fuente": "Selectra (dato inicial)"
+    "avg": 0.2087,
+    "min": 0.1001,
+    "min_h": 4,
+    "max": 0.3436,
+    "max_h": 20,
+    "fuente": "REData (Red Eléctrica)"
    },
    {
     "d": "2026-11-17",
-    "avg": 0.175,
-    "fuente": "Selectra (dato inicial)"
+    "avg": 0.1751,
+    "min": 0.0734,
+    "min_h": 4,
+    "max": 0.2749,
+    "max_h": 18,
+    "fuente": "REData (Red Eléctrica)"
    },
    {
     "d": "2026-11-18",
@@ -55,10 +88,82 @@
     "max": 0.3182,
     "max_h": 20,
     "fuente": "REData (Red Eléctrica)"
+   },
+   {
+    "d": "2026-11-19",
+    "avg": 0.1608,
+    "min": 0.0915,
+    "min_h": 1,
+    "max": 0.3279,
+    "max_h": 20,
+    "fuente": "REData (Red Eléctrica)"
+   },
+   {
+    "d": "2026-11-20",
+    "avg": 0.2124,
+    "min": 0.0786,
+    "min_h": 0,
+    "max": 0.4272,
+    "max_h": 18,
+    "fuente": "REData (Red Eléctrica)"
+   },
+   {
+    "d": "2026-11-21",
+    "avg": 0.1756,
+    "min": 0.1084,
+    "min_h": 23,
+    "max": 0.2193,
+    "max_h": 18,
+    "fuente": "REData (Red Eléctrica)"
    }
   ]
  },
- "comprobaciones": {},
+ "comprobaciones": {
+  "Repsol": {
+   "estado": "cambio",
+   "fecha": "2026-11-21T11:09+00:00"
+  },
+  "Gana Energía": {
+   "estado": "cambio",
+   "fecha": "2026-11-21T11:09+00:00"
+  },
+  "Iberdrola": {
+   "estado": "cambio",
+   "fecha": "2026-11-21T11:09+00:00"
+  },
+  "Endesa": {
+   "estado": "cambio",
+   "fecha": "2026-11-21T11:09+00:00"
+  },
+  "Naturgy": {
+   "estado": "cambio",
+   "fecha": "2026-11-21T11:09+00:00"
+  },
+  "Holaluz": {
+   "estado": "ok",
+   "fecha": "2026-11-21T11:09+00:00"
+  },
+  "Octopus Energy": {
+   "estado": "cambio",
+   "fecha": "2026-11-21T11:09+00:00"
+  },
+  "TotalEnergies": {
+   "estado": "ok",
+   "fecha": "2026-11-21T11:09+00:00"
+  },
+  "Plenitude": {
+   "estado": "cambio",
+   "fecha": "2026-11-21T11:09+00:00"
+  },
+  "Som Energia": {
+   "estado": "error",
+   "fecha": "2026-11-21T11:09+00:00"
+  },
+  "Iner Energía": {
+   "estado": "cambio",
+   "fecha": "2026-11-21T11:09+00:00"
+  }
+ },
  "companias": [
   {
    "n": "Repsol",

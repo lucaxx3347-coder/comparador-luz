@@ -1,0 +1,142 @@
+{
+ "Repsol": {
+  "estado": "cambio",
+  "fecha": "2026-11-21T11:09+00:00",
+  "detalle": [
+   {
+    "url": "https://selectra.es/energia/companias/repsol/tarifas",
+    "faltan": [
+     "0,1659",
+     "0,1159",
+     "0,0969"
+    ]
+   }
+  ]
+ },
+ "Gana Energía": {
+  "estado": "cambio",
+  "fecha": "2026-11-21T11:09+00:00",
+  "detalle": [
+   {
+    "url": "https://www.papernest.es/gana-energia/tarifas/luz/tramos-horarios/",
+    "faltan": [
+     "0,171",
+     "0,104",
+     "0,080"
+    ]
+   }
+  ]
+ },
+ "Iberdrola": {
+  "estado": "cambio",
+  "fecha": "2026-11-21T11:09+00:00",
+  "detalle": [
+   {
+    "url": "https://www.papernest.es/iberdrola/tarifas/plan-online-3-periodos/",
+    "faltan": [
+     "0,194",
+     "0,136",
+     "0,100"
+    ]
+   }
+  ]
+ },
+ "Endesa": {
+  "estado": "cambio",
+  "fecha": "2026-11-21T11:09+00:00",
+  "detalle": [
+   {
+    "url": "https://www.endesa.com/es/luz-y-gas/luz/tempo",
+    "faltan": [
+     "0,18621",
+     "0,11781",
+     "0,09441"
+    ]
+   }
+  ]
+ },
+ "Naturgy": {
+  "estado": "cambio",
+  "fecha": "2026-11-21T11:09+00:00",
+  "detalle": [
+   {
+    "url": "https://www.papernest.es/energia/naturgy/tarifas/noche",
+    "faltan": [
+     "0,1822",
+     "0,1092",
+     "0,0739"
+    ]
+   }
+  ]
+ },
+ "Holaluz": {
+  "estado": "ok",
+  "fecha": "2026-11-21T11:09+00:00",
+  "detalle": [
+   {
+    "url": "https://kompara.es/luz/comparativas/holaluz-vs-iner-energia",
+    "faltan": []
+   }
+  ]
+ },
+ "Octopus Energy": {
+  "estado": "cambio",
+  "fecha": "2026-11-21T11:09+00:00",
+  "detalle": [
+   {
+    "url": "https://selectra.es/energia/companias/octopus-energy/tarifas",
+    "faltan": [
+     "0,1839",
+     "0,0982",
+     "0,0792"
+    ]
+   }
+  ]
+ },
+ "TotalEnergies": {
+  "estado": "ok",
+  "fecha": "2026-11-21T11:09+00:00",
+  "detalle": [
+   {
+    "url": "https://www.papernest.es/totalenergies/tarifas/a-tu-aire-ahorro/",
+    "faltan": []
+   }
+  ]
+ },
+ "Plenitude": {
+  "estado": "cambio",
+  "fecha": "2026-11-21T11:09+00:00",
+  "detalle": [
+   {
+    "url": "https://www.papernest.es/plenitude/tarifas",
+    "faltan": [
+     "0,097296"
+    ]
+   }
+  ]
+ },
+ "Som Energia": {
+  "estado": "error",
+  "fecha": "2026-11-21T11:09+00:00",
+  "detalle": [
+   {
+    "url": "https://roams.es/energia/companias-energeticas/som-energia/tarifas/",
+    "error": "HTTP Error 403: Forbidden"
+   }
+  ]
+ },
+ "Iner Energía": {
+  "estado": "cambio",
+  "fecha": "2026-11-21T11:09+00:00",
+  "detalle": [
+   {
+    "url": "https://selectra.es/energia/companias/iner-energia",
+    "faltan": [
+     "0,1998",
+     "0,1243",
+     "0,0963"
+    ]
+   }
+  ]
+ }
+}
