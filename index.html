@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Comparador de luz</title>
+<style>
+:root{--bg:#f2f4fb;--card:#fff;--tx:#121a33;--mut:#6a7592;--bd:#e4e8f3;--chip:#eef1fa;--acc:#4361ff;--up:#e5383b;--dn:#16a34a;--eq:#f59e0b;--sh:0 4px 16px rgba(30,50,120,.08);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1122;--card:#151e38;--tx:#eef1fa;--mut:#98a4c4;--bd:#243050;--chip:#1d2847;--acc:#7f95ff;--sh:none}}
+:root[data-theme="dark"]{--bg:#0b1122;--card:#151e38;--tx:#eef1fa;--mut:#98a4c4;--bd:#243050;--chip:#1d2847;--acc:#7f95ff;--sh:none}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:540px;margin:0 auto;padding:0 14px 40px}
+.top{padding:18px 2px 6px}
+h1{font-size:26px;margin:0;letter-spacing:-.5px}
+.sub{color:var(--mut);font-size:13px;margin:3px 0 12px}
+.sum{display:flex;gap:8px;margin-bottom:10px}
+.sum div{flex:1;background:var(--card);border-radius:14px;padding:9px 6px;text-align:center;box-shadow:var(--sh);border:1px solid var(--bd)}
+.sum b{display:block;font-size:20px}.sum span{font-size:11px;color:var(--mut)}
+.tabsb{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:8px 0}
+.tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.tab{flex:0 0 auto;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:999px;padding:9px 15px;font-size:14px;font-weight:600;cursor:pointer}
+.tab.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:14px;margin-bottom:11px;box-shadow:var(--sh);animation:in .35s ease both}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.hero{background:linear-gradient(135deg,#3552ff,#8a3dff);color:#fff;border:0;padding:18px}
+.hero .mut,.hero .c span{color:rgba(255,255,255,.8)}
+.hero .c{background:rgba(255,255,255,.16)}
+.crown{font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;opacity:.9;margin-bottom:8px}
+.hd{display:flex;align-items:center;gap:11px}
+.av{width:42px;height:42px;border-radius:14px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:15px;flex:0 0 auto}
+.rk{font-size:12px;color:var(--mut);font-weight:700}
+.nm{font-weight:700;font-size:17px}
+.mid{flex:1;min-width:0}
+.val{text-align:right}
+.big{font-size:24px;font-weight:800;letter-spacing:-.5px;line-height:1}
+.hero .big{font-size:32px}
+.mut{font-size:11px;color:var(--mut)}
+.bar{height:7px;border-radius:9px;background:var(--chip);margin:12px 0 10px;overflow:hidden}
+.hero .bar{background:rgba(255,255,255,.22)}
+.bar i{display:block;height:100%;border-radius:9px;background:var(--acc)}
+.hero .bar i{background:#fff}
+.g{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:11px}
+.g.two{grid-template-columns:repeat(2,1fr)}
+.c{background:var(--chip);border-radius:12px;padding:8px 6px;text-align:center}
+.c b{display:block;font-size:16px}.c span{font-size:11px;color:var(--mut)}
+.ft{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.tr{display:inline-flex;gap:4px;font-weight:700;font-size:12px;padding:4px 9px;border-radius:999px;color:#fff}
+.tr.up{background:var(--up)}.tr.dn{background:var(--dn)}.tr.eq{background:var(--eq)}
+.via{font-size:12px;font-weight:600;padding:4px 9px;border-radius:999px;background:var(--chip)}
+.hero .via{background:rgba(255,255,255,.2)}
+.sp{flex:1}
+.btn{border-radius:11px;padding:9px 13px;font-size:13px;font-weight:700;text-decoration:none;border:1px solid var(--acc);color:var(--acc)}
+.btn.p{background:var(--acc);color:#fff}
+.hero .btn{border-color:rgba(255,255,255,.6);color:#fff}
+.hero .btn.p{background:#fff;color:#3552ff}
+.demo{background:#fff4d6;color:#7a5200;border:1px solid #f3d98a;border-radius:12px;padding:8px 11px;font-size:12px;margin:4px 0 6px}
+.foot{font-size:11px;color:var(--mut);text-align:center;margin-top:16px;line-height:1.5}
+.pv{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:14px;margin:6px 0 4px;box-shadow:var(--sh)}
+.pv h2{font-size:14px;margin:0 0 8px}
+.pv .row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.bars{display:flex;align-items:flex-end;gap:5px;height:90px;margin:12px 0 4px}
+.b{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;font-size:10px;color:var(--mut)}
+.b i{display:block;width:100%;border-radius:6px 6px 2px 2px;min-height:4px}
+.b i.up{background:var(--up)}.b i.dn{background:var(--dn)}.b i.eq{background:var(--eq)}
+.b em{font-style:normal;font-size:9px}
+.note{font-size:12px;color:var(--mut);margin:0 0 10px;line-height:1.4}
+.inp{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:14px;margin:10px 0 4px;box-shadow:var(--sh)}.inp h2{font-size:14px;margin:0 0 10px}.gi{display:grid;grid-template-columns:1fr 1fr;gap:8px}.gi label{font-size:12px;color:var(--mut);display:flex;flex-direction:column;gap:4px}.gi input{font:inherit;font-size:16px;padding:9px 10px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);width:100%}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="top">
+<h1>⚡ Precio de la luz</h1>
+<p class="sub" id="upd">Cargando datos…</p>
+<div class="sum" id="sum"></div>
+<div class="demo"><b>Datos reales, con cautela.</b> Los datos se actualizan cada noche. Introduce tu consumo para ver tu factura estimada. Los precios de las 11 compañías vienen de comparadores (consultados el 19/11/2026) y pueden diferir de la web oficial. El ranking compara solo el precio de la energía, no la potencia. Viabilidad y tendencia aún sin analizar.</div>
+</div>
+<section class="pv" id="pv"></section>
+<section class="inp"><h2>Tu consumo (ejemplo: cámbialo por el de tu factura)</h2><div class="gi">
+<label>Punta (kWh/mes)<input id="kp" type="number" inputmode="decimal" min="0"></label>
+<label>Llano (kWh/mes)<input id="kl" type="number" inputmode="decimal" min="0"></label>
+<label>Valle (kWh/mes)<input id="kv" type="number" inputmode="decimal" min="0"></label>
+<label>Potencia contratada (kW)<input id="kw" type="number" inputmode="decimal" min="0" step="0.1"></label>
+<label>Excedentes de placas (kWh/mes)<input id="ke" type="number" inputmode="decimal" min="0"></label></div>
+<p class="mut" style="margin:8px 0 0">Estimación con impuesto eléctrico del 5,11 %, IVA del 21 % y contador de 0,80 €. Sin descuentos ni bono social.</p></section>
+<div class="tabsb"><div class="tabs" id="tabs"></div></div>
+<div id="list"></div>
+<p class="foot">Semáforo (rojo sube, verde baja, ámbar estable) solo en el bloque PVPC: aún no hay histórico por compañía.<br>Comprueba siempre el precio en la web oficial antes de contratar.</p>
+</div>
+<script>
+var D=[];
+var S={kp:50,kl:80,kv:160,kw:4.6,ke:0};
+function bill(d){
+ if(d.pp==null)return null;
+ var en=d.p*S.kp+d.l*S.kl+d.v*S.kv,pot=(d.pp+d.pv)*S.kw*30,co=0;
+ if(S.ke>0){if(d.ex==null)return null;co=Math.min(S.ke*d.ex,en)}
+ var base=en+pot-co,imp=base*.0511269632;
+ return {t:(base+imp+.8)*1.21,en:en,pot:pot,co:co};
+}
+function f2(x){return x.toFixed(2).replace(".",",")}
+var C={factura:{l:"Mi factura",f:function(d){var b=bill(d);return b?b.t:null},u:"€ al mes (estimado)",dir:1,fm:f2,sfx:" €"},
+precio:{l:"Mejor precio",f:function(d){return d.p*.25+d.l*.35+d.v*.40},u:"€/kWh de media",dir:1,fm:f3,sfx:""},
+manana:{l:"Mejor mañana",f:function(d){return (2*d.l+4*d.p)/6},u:"€/kWh de 8 a 14 h",dir:1,fm:f3,sfx:""},
+tarde:{l:"Mejor tarde",f:function(d){return (d.l+d.p)/2},u:"€/kWh de 14 a 22 h",dir:1,fm:f3,sfx:""},
+exc:{l:"Excedentes",f:function(d){return d.ex},u:"cént./kWh que te pagan",dir:-1,fm:function(x){return (x*100).toFixed(1).replace(".",",")},sfx:" cént."},
+ev:{l:"Coche eléctrico",f:function(d){return d.ev},u:"€/kWh en valle",dir:1,fm:f3,sfx:""}};
+var cur="factura";
+function f3(x){return x.toFixed(3).replace(".",",")}
+function trend(t){var c=t>2?"up":(t<-2?"dn":"eq"),a=t>2?"▲":(t<-2?"▼":"●");return '<span class="tr '+c+'">'+a+' '+(t>0?"+":"")+String(t).replace(".",",")+' %</span>'}
+function card(d,i,k,best){
+ var v=k.f(d),has=v!=null,hero=i==0&&has,fm=k.fm;
+ var hue=(D.indexOf(d)*47+220)%360,ini=d.n.split(" ").map(function(s){return s[0]}).slice(0,2).join("");
+ var why=cur=="factura"?(d.pp==null?"Falta su precio de potencia":"Sin precio de excedentes"):"Esta compañía no tiene este dato";
+ var dtxt=!has?why:(hero?"La mejor ahora":(k.dir==1?"+":"−")+fm(Math.abs(v-best))+k.sfx+" frente a la mejor");
+ var w=has?(k.dir==1?best/v*100:v/best*100):0,grid;
+ if(cur=="factura"){var b=bill(d);grid=b?'<div class="g"><div class="c"><b>'+f2(b.en)+' €</b><span>Energía</span></div><div class="c"><b>'+f2(b.pot)+' €</b><span>Potencia</span></div><div class="c"><b>'+(b.co>0?'−':'')+f2(b.co)+' €</b><span>Excedentes</span></div></div>':''}
+ else if(cur=="exc")grid='<div class="g two"><div class="c"><b>'+(has?f3(d.ex)+' €':'–')+'</b><span>por kWh vertido</span></div><div class="c"><b>'+(has?(d.ex*100).toFixed(1).replace(".",",")+' cént.':'–')+'</b><span>por kWh vertido</span></div></div>'+(has?'<p class="note">'+d.exn+'</p>':'');
+ else if(cur=="ev")grid='<div class="g two"><div class="c"><b>'+(has?f3(d.ev)+' €':'–')+'</b><span>valle (coche eléctrico)</span></div><div class="c"><b>'+f3(d.v)+' €</b><span>valle (tarifa normal)</span></div></div>'+(has?'<p class="note">'+d.evn+'</p>':'');
+ else grid='<div class="g"><div class="c"><b>'+f3(d.p)+'</b><span>Punta</span></div><div class="c"><b>'+f3(d.l)+'</b><span>Llano</span></div><div class="c"><b>'+f3(d.v)+'</b><span>Valle</span></div></div>';
+ return '<div class="card'+(hero?" hero":"")+'" style="animation-delay:'+(i*50)+'ms">'
+ +(hero?'<div class="crown">🏆 La mejor en «'+k.l+'»</div>':'')
+ +'<div class="hd"><div class="av" style="background:hsl('+hue+',65%,50%)">'+ini+'</div><div class="mid"><div class="rk mut">Puesto '+(i+1)+'</div><div class="nm">'+d.n+'</div></div><div class="val"><div class="big">'+(has?fm(v):'Sin dato')+'</div><div class="mut">'+(has?k.u:'')+'</div></div></div>'
+ +'<div class="bar"><i style="width:'+(has?Math.max(8,w).toFixed(0):0)+'%"></i></div>'
+ +'<div class="mut" style="margin:-4px 0 10px">'+dtxt+'</div>'+grid
+ +'<div class="ft"><span class="via">'+d.tarifa+'</span>'+chip(d)+'<span class="sp"></span><a class="btn p" href="'+d.web+'" target="_blank" rel="noopener">'+d.wl+'</a></div>'
+ +(d.nota?'<p class="note" style="margin:10px 0 0">'+d.nota+'</p>':'')+'</div>';
+}
+function render(){
+ if(!D.length){document.getElementById("list").innerHTML='<p class="note">Cargando datos…</p>';return}
+ var k=C[cur],rows=D.slice().sort(function(a,b){var x=k.f(a),y=k.f(b);if(x==null&&y==null)return 0;if(x==null)return 1;if(y==null)return -1;return (x-y)*k.dir});
+ var best=k.f(rows[0]);
+ document.getElementById("list").innerHTML=rows.map(function(d,i){return card(d,i,k,best)}).join("");
+ document.getElementById("sum").innerHTML='<div><b>'+D.length+'</b><span>compañías</span></div><div><b>'+rows.filter(function(d){return k.f(d)!=null}).length+'</b><span>con este dato</span></div>';
+ document.getElementById("tabs").innerHTML=Object.keys(C).map(function(x){return '<button class="tab'+(x==cur?" on":"")+'" data-k="'+x+'">'+C[x].l+'</button>'}).join("");
+ var bs=document.querySelectorAll(".tab");for(var i=0;i<bs.length;i++)bs[i].onclick=function(){cur=this.getAttribute("data-k");render();window.scrollTo(0,0)};
+}
+function readIn(){["kp","kl","kv","kw","ke"].forEach(function(id){var v=parseFloat(String(document.getElementById(id).value).replace(",","."));S[id]=isNaN(v)||v<0?0:v});render()}
+function initIn(){["kp","kl","kv","kw","ke"].forEach(function(id){var e=document.getElementById(id);e.value=S[id];e.oninput=readIn})}
+initIn();
+render();
+var PVH=[],CHK={};
+function chip(d){var c=CHK[d.n];if(!c)return "";var t=c.estado=="ok"?"✓ Comprobado":(c.estado=="cambio"?"⚠ Revisar precio":"Sin comprobar");return '<span class="via">'+t+'</span>'}
+function fd(s){return s.slice(8,10)+"/"+s.slice(5,7)}
+function pvRender(){
+ var h=PVH.slice(-14),cols=[],prev=null,lt=0;
+ if(!h.length){document.getElementById("pv").innerHTML="";return}
+ h.forEach(function(x){var c="eq";if(prev!=null){lt=(x.avg-prev)/prev*100;c=lt>2?"up":(lt<-2?"dn":"eq")}prev=x.avg;cols.push(c)});
+ var u=h[h.length-1];
+ document.getElementById("pv").innerHTML='<h2>Tarifa regulada (PVPC) · datos reales</h2><div class="row"><div class="big">'+f3(u.avg)+' €/kWh</div>'+trend(Math.round(lt*10)/10)+'</div>'
+ +'<div class="mut" style="margin-top:4px">Media del '+fd(u.d)+(u.min!=null?' · más barata a las '+u.min_h+' h ('+f3(u.min)+') y más cara a las '+u.max_h+' h ('+f3(u.max)+')':'')+'</div>'
+ +'<div class="bars">'+h.map(function(x,i){return '<div class="b"><em>'+f3(x.avg).slice(1)+'</em><i class="'+cols[i]+'" style="height:'+Math.round(x.avg/.25*80)+'%"></i><span>'+x.d.slice(8,10)+'</span></div>'}).join("")+'</div>'
+ +'<div class="mut">Medias diarias (€/kWh). Color: cambio frente al día anterior. Fuente: Red Eléctrica (REData); los primeros días, Selectra.</div>';
+}
+fetch("data/data.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){
+ D=j.companias;PVH=j.pvpc.dias;CHK=j.comprobaciones||{};
+ var g=new Date(j.generado);
+ document.getElementById("upd").textContent="Datos actualizados el "+g.toLocaleDateString("es-ES")+" a las "+g.toLocaleTimeString("es-ES",{hour:"2-digit",minute:"2-digit"})+" · precios en €/kWh";
+ render();pvRender();
+}).catch(function(){document.getElementById("upd").textContent="No se pudieron cargar los datos. Recarga la página.";});
+</script>
+</body>
+</html>
