@@ -143,7 +143,7 @@ function initIn(){document.getElementById("tax").onchange=readIn;["kp","kl","kv"
 initIn();
 render();
 var PVH=[],CHK={};
-function chip(d){var c=CHK[d.n];if(!c)return "";var t=c.estado=="ok"?"✓ Comprobado":(c.estado=="cambio"?"⚠ Revisar precio":(c.estado=="sin_confirmar"?"Sin verificar":"Sin comprobar"));return '<span class="via">'+t+'</span>'}
+function chip(d){var c=CHK[d.n];if(!c)return "";var t=c.estado=="ok"?"✓ Comprobado":(c.estado=="cambio"?"⚠ Revisar precio":"");return t?'<span class="via">'+t+'</span>':""}
 function fd(s){return s.slice(8,10)+"/"+s.slice(5,7)}
 function pvRender(){
  var h=PVH.slice(-14),cols=[],prev=null,lt=0;
