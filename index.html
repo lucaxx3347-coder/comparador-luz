@@ -66,6 +66,7 @@ h1{font-size:26px;margin:0;letter-spacing:-.5px}
 .b em{font-style:normal;font-size:9px}
 .note{font-size:12px;color:var(--mut);margin:0 0 10px;line-height:1.4}
 .inp{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:14px;margin:10px 0 4px;box-shadow:var(--sh)}.inp h2{font-size:14px;margin:0 0 10px}.gi{display:grid;grid-template-columns:1fr 1fr;gap:8px}.gi label{font-size:12px;color:var(--mut);display:flex;flex-direction:column;gap:4px}.gi input{font:inherit;font-size:16px;padding:9px 10px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);width:100%}
+.tg{display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--mut);margin-top:10px}.tg input{margin-top:2px}
 </style>
 </head>
 <body>
@@ -83,6 +84,7 @@ h1{font-size:26px;margin:0;letter-spacing:-.5px}
 <label>Valle (kWh/mes)<input id="kv" type="number" inputmode="decimal" min="0"></label>
 <label>Potencia contratada (kW)<input id="kw" type="number" inputmode="decimal" min="0" step="0.1"></label>
 <label>Excedentes de placas (kWh/mes)<input id="ke" type="number" inputmode="decimal" min="0"></label></div>
+<label class="tg"><input type="checkbox" id="tax"> Ver los precios por kWh con impuestos (IVA 21 % + impuesto eléctrico 5,11 %). Por defecto se muestran sin impuestos.</label>
 <p class="mut" style="margin:8px 0 0">Estimación con impuesto eléctrico del 5,11 %, IVA del 21 % y contador de 0,80 €. Sin descuentos ni bono social.</p></section>
 <div class="tabsb"><div class="tabs" id="tabs"></div></div>
 <div id="list"></div>
@@ -90,6 +92,7 @@ h1{font-size:26px;margin:0;letter-spacing:-.5px}
 </div>
 <script>
 var D=[];
+var TAX=false;function tx(x){return TAX?x*1.0511269632*1.21:x}
 var S={kp:50,kl:80,kv:160,kw:4.6,ke:0};
 function bill(d){
  if(d.pp==null)return null;
@@ -100,11 +103,11 @@ function bill(d){
 }
 function f2(x){return x.toFixed(2).replace(".",",")}
 var C={factura:{l:"Mi factura",f:function(d){var b=bill(d);return b?b.t:null},u:"€ al mes (estimado)",dir:1,fm:f2,sfx:" €"},
-precio:{l:"Mejor precio",f:function(d){return d.p*.25+d.l*.35+d.v*.40},u:"€/kWh de media",dir:1,fm:f3,sfx:""},
-manana:{l:"Mejor mañana",f:function(d){return (2*d.l+4*d.p)/6},u:"€/kWh de 8 a 14 h",dir:1,fm:f3,sfx:""},
-tarde:{l:"Mejor tarde",f:function(d){return (d.l+d.p)/2},u:"€/kWh de 14 a 22 h",dir:1,fm:f3,sfx:""},
+precio:{l:"Mejor precio",f:function(d){return tx(d.p*.25+d.l*.35+d.v*.40)},u:"€/kWh de media",dir:1,fm:f3,sfx:""},
+manana:{l:"Mejor mañana",f:function(d){return tx((2*d.l+4*d.p)/6)},u:"€/kWh de 8 a 14 h",dir:1,fm:f3,sfx:""},
+tarde:{l:"Mejor tarde",f:function(d){return tx((d.l+d.p)/2)},u:"€/kWh de 14 a 22 h",dir:1,fm:f3,sfx:""},
 exc:{l:"Excedentes",f:function(d){return d.ex},u:"cént./kWh que te pagan",dir:-1,fm:function(x){return (x*100).toFixed(1).replace(".",",")},sfx:" cént."},
-ev:{l:"Coche eléctrico",f:function(d){return d.ev},u:"€/kWh en valle",dir:1,fm:f3,sfx:""}};
+ev:{l:"Coche eléctrico",f:function(d){return d.ev==null?null:tx(d.ev)},u:"€/kWh en valle",dir:1,fm:f3,sfx:""}};
 var cur="factura";
 function f3(x){return x.toFixed(3).replace(".",",")}
 function trend(t){var c=t>2?"up":(t<-2?"dn":"eq"),a=t>2?"▲":(t<-2?"▼":"●");return '<span class="tr '+c+'">'+a+' '+(t>0?"+":"")+String(t).replace(".",",")+' %</span>'}
@@ -116,15 +119,15 @@ function card(d,i,k,best){
  var w=has?(k.dir==1?best/v*100:v/best*100):0,grid;
  if(cur=="factura"){var b=bill(d);grid=b?'<div class="g"><div class="c"><b>'+f2(b.en)+' €</b><span>Energía</span></div><div class="c"><b>'+f2(b.pot)+' €</b><span>Potencia</span></div><div class="c"><b>'+(b.co>0?'−':'')+f2(b.co)+' €</b><span>Excedentes</span></div></div>':''}
  else if(cur=="exc")grid='<div class="g two"><div class="c"><b>'+(has?f3(d.ex)+' €':'–')+'</b><span>por kWh vertido</span></div><div class="c"><b>'+(has?(d.ex*100).toFixed(1).replace(".",",")+' cént.':'–')+'</b><span>por kWh vertido</span></div></div>'+(has?'<p class="note">'+d.exn+'</p>':'');
- else if(cur=="ev")grid='<div class="g two"><div class="c"><b>'+(has?f3(d.ev)+' €':'–')+'</b><span>valle (coche eléctrico)</span></div><div class="c"><b>'+f3(d.v)+' €</b><span>valle (tarifa normal)</span></div></div>'+(has?'<p class="note">'+d.evn+'</p>':'');
- else grid='<div class="g"><div class="c"><b>'+f3(d.p)+'</b><span>Punta</span></div><div class="c"><b>'+f3(d.l)+'</b><span>Llano</span></div><div class="c"><b>'+f3(d.v)+'</b><span>Valle</span></div></div>';
+ else if(cur=="ev")grid='<div class="g two"><div class="c"><b>'+(has?f3(tx(d.ev))+' €':'–')+'</b><span>valle (coche eléctrico)</span></div><div class="c"><b>'+f3(tx(d.v))+' €</b><span>valle (tarifa normal)</span></div></div>'+(has?'<p class="note">'+d.evn+'</p>':'');
+ else grid='<div class="g"><div class="c"><b>'+f3(tx(d.p))+'</b><span>Punta</span></div><div class="c"><b>'+f3(tx(d.l))+'</b><span>Llano</span></div><div class="c"><b>'+f3(tx(d.v))+'</b><span>Valle</span></div></div>';
  return '<div class="card'+(hero?" hero":"")+'" style="animation-delay:'+(i*50)+'ms">'
  +(hero?'<div class="crown">🏆 La mejor en «'+k.l+'»</div>':'')
  +'<div class="hd"><div class="av" style="background:hsl('+hue+',65%,50%)">'+ini+'</div><div class="mid"><div class="rk mut">Puesto '+(i+1)+'</div><div class="nm">'+d.n+'</div></div><div class="val"><div class="big">'+(has?fm(v):'Sin dato')+'</div><div class="mut">'+(has?k.u:'')+'</div></div></div>'
  +'<div class="bar"><i style="width:'+(has?Math.max(8,w).toFixed(0):0)+'%"></i></div>'
  +'<div class="mut" style="margin:-4px 0 10px">'+dtxt+'</div>'+grid
  +'<div class="ft"><span class="via">'+d.tarifa+'</span>'+chip(d)+'<span class="sp"></span><a class="btn p" href="'+d.web+'" target="_blank" rel="noopener">'+d.wl+'</a></div>'
- +(d.nota?'<p class="note" style="margin:10px 0 0">'+d.nota+'</p>':'')+'</div>';
+ +(d.nota?'<p class="note" style="margin:10px 0 0">'+d.nota+'</p>':'')+(d.ver?'<p class="note" style="margin:6px 0 0;font-size:11px">Verificado: '+d.ver+'</p>':'')+'</div>';
 }
 function render(){
  if(!D.length){document.getElementById("list").innerHTML='<p class="note">Cargando datos…</p>';return}
@@ -135,12 +138,12 @@ function render(){
  document.getElementById("tabs").innerHTML=Object.keys(C).map(function(x){return '<button class="tab'+(x==cur?" on":"")+'" data-k="'+x+'">'+C[x].l+'</button>'}).join("");
  var bs=document.querySelectorAll(".tab");for(var i=0;i<bs.length;i++)bs[i].onclick=function(){cur=this.getAttribute("data-k");render();window.scrollTo(0,0)};
 }
-function readIn(){["kp","kl","kv","kw","ke"].forEach(function(id){var v=parseFloat(String(document.getElementById(id).value).replace(",","."));S[id]=isNaN(v)||v<0?0:v});render()}
-function initIn(){["kp","kl","kv","kw","ke"].forEach(function(id){var e=document.getElementById(id);e.value=S[id];e.oninput=readIn})}
+function readIn(){TAX=document.getElementById("tax").checked;["kp","kl","kv","kw","ke"].forEach(function(id){var v=parseFloat(String(document.getElementById(id).value).replace(",","."));S[id]=isNaN(v)||v<0?0:v});render()}
+function initIn(){document.getElementById("tax").onchange=readIn;["kp","kl","kv","kw","ke"].forEach(function(id){var e=document.getElementById(id);e.value=S[id];e.oninput=readIn})}
 initIn();
 render();
 var PVH=[],CHK={};
-function chip(d){var c=CHK[d.n];if(!c)return "";var t=c.estado=="ok"?"✓ Comprobado":(c.estado=="cambio"?"⚠ Revisar precio":"Sin comprobar");return '<span class="via">'+t+'</span>'}
+function chip(d){var c=CHK[d.n];if(!c)return "";var t=c.estado=="ok"?"✓ Comprobado":(c.estado=="cambio"?"⚠ Revisar precio":(c.estado=="sin_confirmar"?"Sin verificar":"Sin comprobar"));return '<span class="via">'+t+'</span>'}
 function fd(s){return s.slice(8,10)+"/"+s.slice(5,7)}
 function pvRender(){
  var h=PVH.slice(-14),cols=[],prev=null,lt=0;
