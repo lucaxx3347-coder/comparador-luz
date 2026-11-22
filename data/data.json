@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-21T21:30+00:00",
+ "generado": "2026-11-22T10:39+00:00",
  "pvpc": {
   "dias": [
    {
@@ -130,47 +130,47 @@
  "comprobaciones": {
   "Repsol": {
    "estado": "cambio",
-   "fecha": "2026-11-21T21:29+00:00"
+   "fecha": "2026-11-22T10:38+00:00"
   },
   "Gana Energía": {
    "estado": "cambio",
-   "fecha": "2026-11-21T21:29+00:00"
+   "fecha": "2026-11-22T10:38+00:00"
   },
   "Iberdrola": {
    "estado": "cambio",
-   "fecha": "2026-11-21T21:29+00:00"
+   "fecha": "2026-11-22T10:38+00:00"
   },
   "Endesa": {
    "estado": "cambio",
-   "fecha": "2026-11-21T21:29+00:00"
+   "fecha": "2026-11-22T10:38+00:00"
   },
   "Naturgy": {
    "estado": "cambio",
-   "fecha": "2026-11-21T21:29+00:00"
+   "fecha": "2026-11-22T10:38+00:00"
   },
   "Holaluz": {
    "estado": "ok",
-   "fecha": "2026-11-21T21:29+00:00"
+   "fecha": "2026-11-22T10:38+00:00"
   },
   "Octopus Energy": {
    "estado": "cambio",
-   "fecha": "2026-11-21T21:29+00:00"
+   "fecha": "2026-11-22T10:38+00:00"
   },
   "TotalEnergies": {
    "estado": "ok",
-   "fecha": "2026-11-21T21:29+00:00"
+   "fecha": "2026-11-22T10:38+00:00"
   },
   "Plenitude": {
    "estado": "cambio",
-   "fecha": "2026-11-21T21:29+00:00"
+   "fecha": "2026-11-22T10:38+00:00"
   },
   "Som Energia": {
    "estado": "error",
-   "fecha": "2026-11-21T21:29+00:00"
+   "fecha": "2026-11-22T10:38+00:00"
   },
   "Iner Energía": {
    "estado": "cambio",
-   "fecha": "2026-11-21T21:29+00:00"
+   "fecha": "2026-11-22T10:38+00:00"
   }
  },
  "companias": [
